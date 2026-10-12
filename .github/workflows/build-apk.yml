@@ -24,11 +24,32 @@ jobs:
           flutter-version: '3.19.x'
           channel: 'stable'
 
+      - name: Force Correct Package Name in pubspec
+        run: |
+          echo "name: con_aria" > pubspec.yaml
+          echo "description: App Android per la gestione delle visite della bambina." >> pubspec.yaml
+          echo "publish_to: 'none'" >> pubspec.yaml
+          echo "version: 1.0.0+1" >> pubspec.yaml
+          echo "" >> pubspec.yaml
+          echo "environment:" >> pubspec.yaml
+          echo "  sdk: '>=3.0.0 <4.0.0'" >> pubspec.yaml
+          echo "" >> pubspec.yaml
+          echo "dependencies:" >> pubspec.yaml
+          echo "  flutter:" >> pubspec.yaml
+          echo "    sdk: flutter" >> pubspec.yaml
+          echo "  webview_flutter: ^4.2.2" >> pubspec.yaml
+          echo "" >> pubspec.yaml
+          echo "dev_dependencies:" >> pubspec.yaml
+          echo "  flutter_test:" >> pubspec.yaml
+          echo "    sdk: flutter" >> pubspec.yaml
+          echo "" >> pubspec.yaml
+          echo "flutter:" >> pubspec.yaml
+          echo "  uses-material-design: true" >> pubspec.yaml
+          echo "  assets:" >> pubspec.yaml
+          echo "    - assets/images/" >> pubspec.yaml
+
       - name: Get Flutter dependencies
         run: flutter pub get
-
-      - name: Generate Android project files
-        run: flutter create . --platforms=android
 
       - name: Build Release APK
         run: flutter build apk --release
