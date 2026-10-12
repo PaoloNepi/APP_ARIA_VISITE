@@ -33,7 +33,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late final WebViewController _controller;
 
-  // SOSTITUISCI CON L'URL DELLA TUA WEB APP GOOGLE APPS SCRIPT
   final String webAppUrl = "https://script.google.com/macros/s/AKfycbzGjI_I1EHrcDxte_BQ3_FiYyixYaMkTrJO7GjkX8zxBmuDbbL39zJ2A4aRwQpAKXrCOg/exec";
 
   @override
@@ -41,6 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0xFFF4F5F7))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onWebResourceError: (WebResourceError error) {
+            debugPrint('Errore WebView: ${error.description}');
+          },
+        ),
+      )
+      ..enableZoom(true)
       ..loadRequest(Uri.parse(webAppUrl));
   }
 
