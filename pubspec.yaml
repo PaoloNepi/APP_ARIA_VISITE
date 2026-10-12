@@ -1,4 +1,4 @@
-name: STAI CON ARIA
+name: CON ARIA
 description: App Android per la gestione delle visite della bambina.
 publish_to: 'none'
 version: 1.0.0+1
@@ -17,3 +17,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
